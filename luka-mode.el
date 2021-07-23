@@ -20,31 +20,25 @@
 ;;
 ;;; Code:
 
-(setq luka-font-lock-keywords
-      (let* (
-             (x-keywords '("fn" "return" "if" "else" "let" "mut" "extern" "while" "break" "as" "struct" "enum" "import" "type" "defer"))
-             (x-types '("int" "string" "void" "float" "double" "char" "any" "bool" "s8" "s16" "s32" "s64" "u8" "u16" "u32" "u64" "f32" "f64"))
-             (x-constants '("null" "true" "false"))
-             (x-events '())
-             (x-functions '())
+(defconst luka-keywords
+  '("fn" "return" "if" "else" "let" "mut" "extern" "while" "break" "as" "struct" "enum" "import" "type" "defer"))
 
-             (x-keywords-regexp (regexp-opt x-keywords 'symbols))
-             (x-types-regexp (regexp-opt x-types 'symbols))
-            (x-constants-regexp (regexp-opt x-constants 'symbols))
-            (x-events-regexp (regexp-opt x-events 'symbols))
-            (x-functions-regexp (regexp-opt x-functions 'symbols)))
+(defconst luka-types
+  '("int" "string" "void" "float" "double" "char" "any" "bool" "s8" "s16" "s32" "s64" "u8" "u16" "u32" "u64" "f32" "f64"))
 
-        `(
-          (,x-constants-regexp . font-lock-constant-face)
-          (,x-events-regexp . font-lock-builtin-face)
-          (,x-functions-regexp . font-lock-function-name-face)
-          ("@[A-Za-z_][A-Za-z0-9_]*" . font-lock-builtin-face)
-          (,x-keywords-regexp . font-lock-keyword-face)
-          (,x-types-regexp . font-lock-type-face)
-          ("[A-Za-z_][A-Za-z0-9_]*" . font-lock-variable-name-face)
-          ;; note: order above matters, because once colored, that part won't change.
-          ;; in general, put longer words first
-          )))
+(defconst luka-constants
+  '("null" "true" "false"))
+
+(defconst luka-re-identifier "[[:word:]_][[:word:]_[:digit:]]*")
+
+(defvar luka-font-lock-keywords
+  (append
+   `(
+     (,(concat "@" luka-re-identifier) . font-lock-builtin-face)
+     (,(regexp-opt luka-keywords 'symbols) . font-lock-keyword-face)
+     (,(regexp-opt luka-constants 'symbols) . font-lock-constant-face)
+     (,(regexp-opt luka-types 'symbols) . font-lock-type-face)
+     )))
 
 ;;;###autoload
 (define-derived-mode luka-mode c-mode "luka mode"
