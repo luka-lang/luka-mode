@@ -28,11 +28,11 @@
              (x-events '())
              (x-functions '())
 
-             (x-keywords-regexp (regexp-opt x-keywords 'words))
-             (x-types-regexp (regexp-opt x-types 'words))
-            (x-constants-regexp (regexp-opt x-constants 'words))
-            (x-events-regexp (regexp-opt x-events 'words))
-            (x-functions-regexp (regexp-opt x-functions 'words)))
+             (x-keywords-regexp (regexp-opt x-keywords 'symbols))
+             (x-types-regexp (regexp-opt x-types 'symbols))
+            (x-constants-regexp (regexp-opt x-constants 'symbols))
+            (x-events-regexp (regexp-opt x-events 'symbols))
+            (x-functions-regexp (regexp-opt x-functions 'symbols)))
 
         `(
           (,x-constants-regexp . font-lock-constant-face)
