@@ -22,7 +22,7 @@
 
 (setq luka-font-lock-keywords
       (let* (
-             (x-keywords '("fn" "return" "if" "else" "let" "mut" "extern" "while" "break" "as" "struct" "enum"))
+             (x-keywords '("fn" "return" "if" "else" "let" "mut" "extern" "while" "break" "as" "struct" "enum" "import" "type" "defer"))
              (x-types '("int" "string" "void" "float" "double" "char" "any" "bool" "s8" "s16" "s32" "s64" "u8" "u16" "u32" "u64" "f32" "f64"))
              (x-constants '("null" "true" "false"))
              (x-events '())
