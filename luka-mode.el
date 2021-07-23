@@ -38,8 +38,10 @@
           (,x-constants-regexp . font-lock-constant-face)
           (,x-events-regexp . font-lock-builtin-face)
           (,x-functions-regexp . font-lock-function-name-face)
+          ("@[A-Za-z_][A-Za-z0-9_]*" . font-lock-builtin-face)
           (,x-keywords-regexp . font-lock-keyword-face)
           (,x-types-regexp . font-lock-type-face)
+          ("[A-Za-z_][A-Za-z0-9_]*" . font-lock-variable-name-face)
           ;; note: order above matters, because once colored, that part won't change.
           ;; in general, put longer words first
           )))
